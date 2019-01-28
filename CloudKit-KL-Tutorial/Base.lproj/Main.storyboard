@@ -10,18 +10,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Public-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PublicViewController" customModule="CloudKit_KL_Tutorial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F7S-nG-sip">
-                                <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7S-nG-sip">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Public" leftItemsSupplementBackButton="YES" id="gAv-2B-uo6">
+                                    <navigationItem leftItemsSupplementBackButton="YES" id="gAv-2B-uo6">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VYV-FN-yHW">
                                             <connections>
                                                 <action selector="onPlusTapped" destination="BYZ-38-t0r" id="xfi-Ty-OqE"/>
@@ -31,7 +31,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JZq-Rk-CFR">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="W34-FT-7BU"/>
@@ -52,7 +52,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Rdj-SN-Mmm"/>
+                    <tabBarItem key="tabBarItem" title="Public" id="Rdj-SN-Mmm"/>
                     <connections>
                         <outlet property="tableView" destination="JZq-Rk-CFR" id="XRP-72-fDx"/>
                     </connections>
@@ -61,36 +61,47 @@
             </objects>
             <point key="canvasLocation" x="1206" y="133"/>
         </scene>
-        <!--Item-->
+        <!--Shared-->
         <scene sceneID="s9e-eI-Yfz">
             <objects>
-                <viewController id="gKY-fC-mZR" sceneMemberID="viewController">
+                <viewController id="gKY-fC-mZR" customClass="SharedViewController" customModule="CloudKit_KL_Tutorial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ph-hL-2xQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUf-MW-poV">
-                                <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUf-MW-poV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Shared" leftItemsSupplementBackButton="YES" id="3gd-ge-CEU">
+                                    <navigationItem leftItemsSupplementBackButton="YES" id="3gd-ge-CEU">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="k02-dy-evz"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4YW-Es-bHb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gKY-fC-mZR" id="KrX-Pb-Fq0"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RUf-MW-poV" firstAttribute="leading" secondItem="5ow-fj-ZFU" secondAttribute="leading" id="45j-v9-kqD"/>
+                            <constraint firstItem="4YW-Es-bHb" firstAttribute="leading" secondItem="5ow-fj-ZFU" secondAttribute="leading" id="8JY-dY-Odm"/>
+                            <constraint firstItem="4YW-Es-bHb" firstAttribute="trailing" secondItem="5ow-fj-ZFU" secondAttribute="trailing" id="EZV-Mi-wdC"/>
+                            <constraint firstItem="4YW-Es-bHb" firstAttribute="bottom" secondItem="5ow-fj-ZFU" secondAttribute="bottom" id="GOC-qD-JqH"/>
                             <constraint firstItem="RUf-MW-poV" firstAttribute="top" secondItem="5ow-fj-ZFU" secondAttribute="top" id="PTc-dZ-LIT"/>
                             <constraint firstItem="RUf-MW-poV" firstAttribute="trailing" secondItem="5ow-fj-ZFU" secondAttribute="trailing" id="np7-0H-Bku"/>
+                            <constraint firstItem="4YW-Es-bHb" firstAttribute="top" secondItem="RUf-MW-poV" secondAttribute="bottom" id="yZw-HN-dyn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5ow-fj-ZFU"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ci4-94-3ZA"/>
+                    <tabBarItem key="tabBarItem" title="Shared" id="ci4-94-3ZA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uve-DO-8EY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1206" y="898"/>
+            <point key="canvasLocation" x="1205.5999999999999" y="897.30134932533736"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0o2-SQ-cyI">
@@ -111,36 +122,50 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
-        <!--Item-->
+        <!--Private-->
         <scene sceneID="Bs6-tS-QCB">
             <objects>
-                <viewController id="Ye2-Rm-JHW" sceneMemberID="viewController">
+                <viewController id="Ye2-Rm-JHW" customClass="PrivateViewController" customModule="CloudKit_KL_Tutorial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nKJ-Mz-SCR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KyM-1F-ze7">
-                                <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KyM-1F-ze7">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Private" leftItemsSupplementBackButton="YES" id="3Fn-NC-GQ8">
+                                    <navigationItem leftItemsSupplementBackButton="YES" id="3Fn-NC-GQ8">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y5v-K8-BnB"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VZP-Sg-77O">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ye2-Rm-JHW" id="9YK-7v-VAh"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VZP-Sg-77O" firstAttribute="bottom" secondItem="tFP-qG-zx3" secondAttribute="bottom" id="4kP-2I-5yu"/>
+                            <constraint firstItem="VZP-Sg-77O" firstAttribute="top" secondItem="KyM-1F-ze7" secondAttribute="bottom" id="9pk-r9-peR"/>
                             <constraint firstItem="KyM-1F-ze7" firstAttribute="leading" secondItem="tFP-qG-zx3" secondAttribute="leading" id="Bct-ma-qru"/>
+                            <constraint firstItem="VZP-Sg-77O" firstAttribute="leading" secondItem="tFP-qG-zx3" secondAttribute="leading" id="WXX-FV-lci"/>
                             <constraint firstItem="KyM-1F-ze7" firstAttribute="top" secondItem="tFP-qG-zx3" secondAttribute="top" id="cYd-jW-TRJ"/>
+                            <constraint firstItem="VZP-Sg-77O" firstAttribute="trailing" secondItem="tFP-qG-zx3" secondAttribute="trailing" id="n6q-RL-oQ4"/>
                             <constraint firstItem="KyM-1F-ze7" firstAttribute="trailing" secondItem="tFP-qG-zx3" secondAttribute="trailing" id="psb-Vc-qKy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tFP-qG-zx3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="RVy-No-9u5"/>
+                    <tabBarItem key="tabBarItem" title="Private" id="RVy-No-9u5"/>
+                    <connections>
+                        <outlet property="tableView" destination="VZP-Sg-77O" id="ffP-GY-PuG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOQ-Uv-ZFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="966"/>
+            <point key="canvasLocation" x="136.80000000000001" y="965.6671664167917"/>
         </scene>
     </scenes>
 </document>

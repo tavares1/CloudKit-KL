@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DAEB4C0C21FF275C005E2924 /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C0B21FF275C005E2924 /* SharedViewController.swift */; };
 		DAEB4C0E21FF2768005E2924 /* PrivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C0D21FF2768005E2924 /* PrivateViewController.swift */; };
+		DAEB4C1021FF2CC7005E2924 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C0F21FF2CC7005E2924 /* CloudKitHelper.swift */; };
 		DAF83CE221FB26970090CF08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF83CE121FB26970090CF08 /* AppDelegate.swift */; };
 		DAF83CE421FB26970090CF08 /* PublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF83CE321FB26970090CF08 /* PublicViewController.swift */; };
 		DAF83CE721FB26970090CF08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF83CE521FB26970090CF08 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		DAEB4C0B21FF275C005E2924 /* SharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
 		DAEB4C0D21FF2768005E2924 /* PrivateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateViewController.swift; sourceTree = "<group>"; };
+		DAEB4C0F21FF2CC7005E2924 /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		DAF83CDE21FB26970090CF08 /* CloudKit-KL-Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CloudKit-KL-Tutorial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF83CE121FB26970090CF08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAF83CE321FB26970090CF08 /* PublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				DAF83CE821FB269A0090CF08 /* Assets.xcassets */,
 				DAF83CEA21FB269A0090CF08 /* LaunchScreen.storyboard */,
 				DAF83CED21FB269A0090CF08 /* Info.plist */,
+				DAEB4C0F21FF2CC7005E2924 /* CloudKitHelper.swift */,
 			);
 			path = "CloudKit-KL-Tutorial";
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				DAEB4C0E21FF2768005E2924 /* PrivateViewController.swift in Sources */,
 				DAF83CE421FB26970090CF08 /* PublicViewController.swift in Sources */,
 				DAEB4C0C21FF275C005E2924 /* SharedViewController.swift in Sources */,
+				DAEB4C1021FF2CC7005E2924 /* CloudKitHelper.swift in Sources */,
 				DAF83CE221FB26970090CF08 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

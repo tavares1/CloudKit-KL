@@ -9,12 +9,14 @@
 import UIKit
 import CloudKit
 
-class ViewController: UIViewController {
+class PublicViewController: UIViewController {
 
     @IBOutlet weak var tableView:UITableView!
     
-    let database = CKContainer.default().publicCloudDatabase
+    let publicDatabase = CKContainer.default().publicCloudDatabase
     var notes = [CKRecord]()
+    var CKHelper = CloudKitHelper()
+    let note = CKRecord(recordType: "Note")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,14 @@ class ViewController: UIViewController {
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let post = UIAlertAction(title: "Post", style: .default) { (_) in
             guard let text = alert.textFields?.first?.text else { return }
-            self.saveToCloud(note: text)
+            self.CKHelper.saveToCloud(note: text, record: self.note , database: iCloudDatabaseType.publicDB.database , completion: { (sucess) in
+                if(sucess) {
+                    print("Record add with sucess!")
+                } else {
+                    print("error while trying add record in iClod")
+                }
+                self.queryDatabase()
+            })
         }
         
         alert.addAction(cancel)
@@ -43,31 +52,18 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func saveToCloud (note: String) {
-        let newNote = CKRecord(recordType: "Note")
-        newNote.setValue(note, forKey: "content")
-        
-        database.save(newNote) { (record, error) in
-            guard record != nil else { return }
-            let recordSaved = record?.object(forKey: "content")
-            self.queryDatabase()
-        }
-    }
-    
     @objc func queryDatabase () {
-        let query = CKQuery(recordType: "Note", predicate: NSPredicate(value: true))
-        database.perform(query, inZoneWith: nil) { (records, error) in
-            guard let records = records else { return }
+        CKHelper.queryDatabase(database: publicDatabase, note: "Note") { (records) in
             self.notes = records
             DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
             }
         }
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension PublicViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
     }
