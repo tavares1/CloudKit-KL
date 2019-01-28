@@ -7,21 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DAEB4C0C21FF275C005E2924 /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C0B21FF275C005E2924 /* SharedViewController.swift */; };
+		DAEB4C0E21FF2768005E2924 /* PrivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C0D21FF2768005E2924 /* PrivateViewController.swift */; };
 		DAF83CE221FB26970090CF08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF83CE121FB26970090CF08 /* AppDelegate.swift */; };
-		DAF83CE421FB26970090CF08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF83CE321FB26970090CF08 /* ViewController.swift */; };
+		DAF83CE421FB26970090CF08 /* PublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF83CE321FB26970090CF08 /* PublicViewController.swift */; };
 		DAF83CE721FB26970090CF08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF83CE521FB26970090CF08 /* Main.storyboard */; };
 		DAF83CE921FB269A0090CF08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF83CE821FB269A0090CF08 /* Assets.xcassets */; };
 		DAF83CEC21FB269A0090CF08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF83CEA21FB269A0090CF08 /* LaunchScreen.storyboard */; };
+		DAF83CF621FB2CE70090CF08 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF83CF521FB2CE70090CF08 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DAEB4C0B21FF275C005E2924 /* SharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
+		DAEB4C0D21FF2768005E2924 /* PrivateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateViewController.swift; sourceTree = "<group>"; };
 		DAF83CDE21FB26970090CF08 /* CloudKit-KL-Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CloudKit-KL-Tutorial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF83CE121FB26970090CF08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DAF83CE321FB26970090CF08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DAF83CE321FB26970090CF08 /* PublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicViewController.swift; sourceTree = "<group>"; };
 		DAF83CE621FB26970090CF08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DAF83CE821FB269A0090CF08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAF83CEB21FB269A0090CF08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAF83CED21FB269A0090CF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAF83CF321FB2CE50090CF08 /* CloudKit-KL-Tutorial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CloudKit-KL-Tutorial.entitlements"; sourceTree = "<group>"; };
+		DAF83CF521FB2CE70090CF08 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF83CF621FB2CE70090CF08 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +48,7 @@
 			children = (
 				DAF83CE021FB26970090CF08 /* CloudKit-KL-Tutorial */,
 				DAF83CDF21FB26970090CF08 /* Products */,
+				DAF83CF421FB2CE70090CF08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +63,25 @@
 		DAF83CE021FB26970090CF08 /* CloudKit-KL-Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				DAF83CF321FB2CE50090CF08 /* CloudKit-KL-Tutorial.entitlements */,
 				DAF83CE121FB26970090CF08 /* AppDelegate.swift */,
-				DAF83CE321FB26970090CF08 /* ViewController.swift */,
 				DAF83CE521FB26970090CF08 /* Main.storyboard */,
+				DAF83CE321FB26970090CF08 /* PublicViewController.swift */,
+				DAEB4C0B21FF275C005E2924 /* SharedViewController.swift */,
+				DAEB4C0D21FF2768005E2924 /* PrivateViewController.swift */,
 				DAF83CE821FB269A0090CF08 /* Assets.xcassets */,
 				DAF83CEA21FB269A0090CF08 /* LaunchScreen.storyboard */,
 				DAF83CED21FB269A0090CF08 /* Info.plist */,
 			);
 			path = "CloudKit-KL-Tutorial";
+			sourceTree = "<group>";
+		};
+		DAF83CF421FB2CE70090CF08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAF83CF521FB2CE70090CF08 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +116,14 @@
 				TargetAttributes = {
 					DAF83CDD21FB26970090CF08 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -135,7 +163,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAF83CE421FB26970090CF08 /* ViewController.swift in Sources */,
+				DAEB4C0E21FF2768005E2924 /* PrivateViewController.swift in Sources */,
+				DAF83CE421FB26970090CF08 /* PublicViewController.swift in Sources */,
+				DAEB4C0C21FF275C005E2924 /* SharedViewController.swift in Sources */,
 				DAF83CE221FB26970090CF08 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +312,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CloudKit-KL-Tutorial/CloudKit-KL-Tutorial.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37CT2CQ23H;
 				INFOPLIST_FILE = "CloudKit-KL-Tutorial/Info.plist";
@@ -300,6 +331,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CloudKit-KL-Tutorial/CloudKit-KL-Tutorial.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37CT2CQ23H;
 				INFOPLIST_FILE = "CloudKit-KL-Tutorial/Info.plist";
