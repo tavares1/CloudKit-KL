@@ -12,16 +12,38 @@ import CloudKit
 class PrivateViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    let notes = [CKRecord]()
+    var privateNotes = [CKRecord]()
+    let CKHelper = CloudKitHelper()
+    let note = CKRecord(recordType: "Note")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getPrivateNotes()
+        let refreshControl = createRefreshControl(title: "Pull to refresh 🔄", action: #selector(getPrivateNotes))
+        self.tableView.refreshControl = refreshControl
+    }
 
+    @IBAction func onPlusTapped(_ sender: Any) {
+        alertToAddNotes(database: iCloudDatabaseType.privateDB.database) { (record,error) in
+            print(record)
+            print(error)
+        }
+    }
+    
+    @objc func getPrivateNotes () {
+        CKHelper.queryDatabase(database: iCloudDatabaseType.privateDB.database, note: "Note") { (records) in
+            self.privateNotes = records
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            }
+        }
     }
 }
 
 extension PrivateViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
+        return privateNotes.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -30,7 +52,7 @@ extension PrivateViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let note = notes[indexPath.row].value(forKey: "content") as! String
+        let note = privateNotes[indexPath.row].value(forKey: "content") as! String
         cell.textLabel?.text = note
         return cell
     }

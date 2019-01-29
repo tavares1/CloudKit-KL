@@ -73,7 +73,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem leftItemsSupplementBackButton="YES" id="3gd-ge-CEU">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="k02-dy-evz"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="k02-dy-evz">
+                                            <connections>
+                                                <action selector="onPlusTapped:" destination="gKY-fC-mZR" id="TZa-Jg-RDb"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -98,6 +102,9 @@
                         <viewLayoutGuide key="safeArea" id="5ow-fj-ZFU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shared" id="ci4-94-3ZA"/>
+                    <connections>
+                        <outlet property="tableView" destination="4YW-Es-bHb" id="j6w-N2-gQe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uve-DO-8EY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -109,6 +116,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="r80-61-zrD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hjr-xS-9UU">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -134,7 +142,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem leftItemsSupplementBackButton="YES" id="3Fn-NC-GQ8">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="y5v-K8-BnB"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="y5v-K8-BnB">
+                                            <connections>
+                                                <action selector="onPlusTapped:" destination="Ye2-Rm-JHW" id="mru-Xz-GFB"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

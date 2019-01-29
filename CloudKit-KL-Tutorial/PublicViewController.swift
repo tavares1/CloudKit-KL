@@ -13,47 +13,27 @@ class PublicViewController: UIViewController {
 
     @IBOutlet weak var tableView:UITableView!
     
-    let publicDatabase = CKContainer.default().publicCloudDatabase
     var notes = [CKRecord]()
     var CKHelper = CloudKitHelper()
     let note = CKRecord(recordType: "Note")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryDatabase()
-        let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(queryDatabase), for: .valueChanged)
+        getPublicNotes()
+        let refreshControl = createRefreshControl(title: "Pull to refresh! 🔃", action: #selector(getPublicNotes))
         self.tableView.refreshControl = refreshControl
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     @IBAction func onPlusTapped () {
-        let alert = UIAlertController(title: "Type Something", message: "What would you like to in save?", preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.placeholder = "Type note here."
+        alertToAddNotes(database: iCloudDatabaseType.publicDB.database) { (record,error) in
+            print(record)
+            print(error)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let post = UIAlertAction(title: "Post", style: .default) { (_) in
-            guard let text = alert.textFields?.first?.text else { return }
-            self.CKHelper.saveToCloud(note: text, record: self.note , database: iCloudDatabaseType.publicDB.database , completion: { (sucess) in
-                if(sucess) {
-                    print("Record add with sucess!")
-                } else {
-                    print("error while trying add record in iClod")
-                }
-                self.queryDatabase()
-            })
-        }
-        
-        alert.addAction(cancel)
-        alert.addAction(post)
-        
-        present(alert, animated: true, completion: nil)
     }
     
-    @objc func queryDatabase () {
-        CKHelper.queryDatabase(database: publicDatabase, note: "Note") { (records) in
+    @objc func getPublicNotes () {
+        CKHelper.queryDatabase(database: iCloudDatabaseType.publicDB.database, note: "Note") { (records) in
             self.notes = records
             DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -79,3 +59,5 @@ extension PublicViewController: UITableViewDataSource {
         return cell
     }
 }
+
+
