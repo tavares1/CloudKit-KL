@@ -40,4 +40,19 @@ class CloudKitHelper  {
             completion(true)
         }
     }
+    
+    func saveSubscription(subscription: CKQuerySubscription, database: CKDatabase) {
+        
+        database.save(subscription) { [weak self] savedSubscription, error in
+            
+            print(savedSubscription as Any)
+            
+            guard let _ = savedSubscription, error == nil else {
+                
+                print(error?.localizedDescription)
+                
+                return
+            }
+        }
+    }
 }

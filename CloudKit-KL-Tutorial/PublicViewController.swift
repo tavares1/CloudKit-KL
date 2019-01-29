@@ -26,6 +26,16 @@ class PublicViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(queryDatabase), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let subscription = CKQuerySubscription(recordType: "Note", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil), options: [.firesOnRecordCreation, .firesOnRecordDeletion, .firesOnRecordUpdate])
+        
+        let info = CKSubscription.NotificationInfo()
+        info.alertLocalizationKey = "note_registered_alert"
+        info.alertBody = "Nova nota publica adicionada"
+        
+        subscription.notificationInfo = info
+        
+        CKHelper.saveSubscription(subscription: subscription, database: publicDatabase)
     }
 
     @IBAction func onPlusTapped () {
@@ -52,12 +62,12 @@ class PublicViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    @objc func queryDatabase () {
+    @objc func queryDatabase() {
         CKHelper.queryDatabase(database: publicDatabase, note: "Note") { (records) in
             self.notes = records
             DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.tableView.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
             }
         }
     }
