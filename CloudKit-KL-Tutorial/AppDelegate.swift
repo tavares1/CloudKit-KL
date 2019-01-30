@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // set self (AppDelegate) to handle notification
-        UNUserNotificationCenter.current().delegate = self
         
         // Request permission from user to send notification
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { authorized, error in
@@ -99,9 +98,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         
     }
-}
-
-extension AppDelegate: UNUserNotificationCenterDelegate{
     
     // This function will be called when the app receive notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -119,5 +115,21 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
+        let notification = CKNotification.init(fromRemoteNotificationDictionary: userInfo)
+        
+        
+        if notification.notificationType == .query {
+            if (((userInfo["aps"]! as! Dictionary)["alert"]!) as Dictionary)["loc-key"]! == "change_database_registered_alert" {
+                NotificationCenter.default.post(name: .shouldReload, object: nil)
+            } else if (((userInfo["aps"]! as! Dictionary)["alert"]!) as Dictionary)["loc-key"]! == "change_color_registered_alert" {
+                NotificationCenter.default.post(name: .changeAppColor, object: nil)
+            }
+        }
     }
+}
+
+extension Notification.Name {
+    static let shouldReload = Notification.Name.init("shouldReload")
+    
+    static let changeAppColor = Notification.Name.init("changeAppColor")
 }

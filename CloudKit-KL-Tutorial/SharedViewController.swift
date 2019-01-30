@@ -11,11 +11,33 @@ import CloudKit
 
 class SharedViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     var sharedNotes = [CKRecord]()
+    var CKHelper = CloudKitHelper()
+    let note = CKRecord(recordType: "Note")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getSharedNotes()
+        let refreshControl = createRefreshControl(title: "Pull to refresh 🔄", action: #selector(getSharedNotes))
+        self.tableView.refreshControl = refreshControl
+    }
+    
+    @IBAction func onPlusTapped(_ sender: Any) {
+        alertToAddNotes(database: iCloudDatabaseType.sharedDB.database) { (record,error) in
+            print(record)
+            print(error)
+        }
+    }
+    
+    @objc func getSharedNotes () {
+        CKHelper.queryDatabase(database: iCloudDatabaseType.sharedDB.database, note: "Note") { (records) in
+            self.sharedNotes = records
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            }
+        }
     }
 }
 

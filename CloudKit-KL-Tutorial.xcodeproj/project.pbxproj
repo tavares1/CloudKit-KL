@@ -7,26 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4B493642201CA3400A0A8B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4B493632201CA3400A0A8B1 /* Assets.xcassets */; };
 		DAEB4C0C21FF275C005E2924 /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C0B21FF275C005E2924 /* SharedViewController.swift */; };
 		DAEB4C0E21FF2768005E2924 /* PrivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C0D21FF2768005E2924 /* PrivateViewController.swift */; };
 		DAEB4C1021FF2CC7005E2924 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C0F21FF2CC7005E2924 /* CloudKitHelper.swift */; };
+		DAEB4C1222007667005E2924 /* AddNoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C1122007667005E2924 /* AddNoteError.swift */; };
+		DAEB4C1422007B19005E2924 /* UIViewController+AlertToAddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C1322007B19005E2924 /* UIViewController+AlertToAddNote.swift */; };
+		DAEB4C1622007DD4005E2924 /* UIViewController+RefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB4C1522007DD4005E2924 /* UIViewController+RefreshController.swift */; };
 		DAF83CE221FB26970090CF08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF83CE121FB26970090CF08 /* AppDelegate.swift */; };
 		DAF83CE421FB26970090CF08 /* PublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF83CE321FB26970090CF08 /* PublicViewController.swift */; };
 		DAF83CE721FB26970090CF08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF83CE521FB26970090CF08 /* Main.storyboard */; };
-		DAF83CE921FB269A0090CF08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF83CE821FB269A0090CF08 /* Assets.xcassets */; };
 		DAF83CEC21FB269A0090CF08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF83CEA21FB269A0090CF08 /* LaunchScreen.storyboard */; };
 		DAF83CF621FB2CE70090CF08 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF83CF521FB2CE70090CF08 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A4B493632201CA3400A0A8B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAEB4C0B21FF275C005E2924 /* SharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
 		DAEB4C0D21FF2768005E2924 /* PrivateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateViewController.swift; sourceTree = "<group>"; };
 		DAEB4C0F21FF2CC7005E2924 /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
+		DAEB4C1122007667005E2924 /* AddNoteError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteError.swift; sourceTree = "<group>"; };
+		DAEB4C1322007B19005E2924 /* UIViewController+AlertToAddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AlertToAddNote.swift"; sourceTree = "<group>"; };
+		DAEB4C1522007DD4005E2924 /* UIViewController+RefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+RefreshController.swift"; sourceTree = "<group>"; };
 		DAF83CDE21FB26970090CF08 /* CloudKit-KL-Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CloudKit-KL-Tutorial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF83CE121FB26970090CF08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAF83CE321FB26970090CF08 /* PublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicViewController.swift; sourceTree = "<group>"; };
 		DAF83CE621FB26970090CF08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DAF83CE821FB269A0090CF08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAF83CEB21FB269A0090CF08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAF83CED21FB269A0090CF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAF83CF321FB2CE50090CF08 /* CloudKit-KL-Tutorial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CloudKit-KL-Tutorial.entitlements"; sourceTree = "<group>"; };
@@ -68,13 +74,16 @@
 				DAF83CF321FB2CE50090CF08 /* CloudKit-KL-Tutorial.entitlements */,
 				DAF83CE121FB26970090CF08 /* AppDelegate.swift */,
 				DAF83CE521FB26970090CF08 /* Main.storyboard */,
+				DAEB4C1122007667005E2924 /* AddNoteError.swift */,
 				DAF83CE321FB26970090CF08 /* PublicViewController.swift */,
 				DAEB4C0B21FF275C005E2924 /* SharedViewController.swift */,
 				DAEB4C0D21FF2768005E2924 /* PrivateViewController.swift */,
-				DAF83CE821FB269A0090CF08 /* Assets.xcassets */,
+				DAEB4C1522007DD4005E2924 /* UIViewController+RefreshController.swift */,
 				DAF83CEA21FB269A0090CF08 /* LaunchScreen.storyboard */,
+				A4B493632201CA3400A0A8B1 /* Assets.xcassets */,
 				DAF83CED21FB269A0090CF08 /* Info.plist */,
 				DAEB4C0F21FF2CC7005E2924 /* CloudKitHelper.swift */,
+				DAEB4C1322007B19005E2924 /* UIViewController+AlertToAddNote.swift */,
 			);
 			path = "CloudKit-KL-Tutorial";
 			sourceTree = "<group>";
@@ -154,7 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAF83CEC21FB269A0090CF08 /* LaunchScreen.storyboard in Resources */,
-				DAF83CE921FB269A0090CF08 /* Assets.xcassets in Resources */,
+				A4B493642201CA3400A0A8B1 /* Assets.xcassets in Resources */,
 				DAF83CE721FB26970090CF08 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,10 +175,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEB4C1222007667005E2924 /* AddNoteError.swift in Sources */,
 				DAEB4C0E21FF2768005E2924 /* PrivateViewController.swift in Sources */,
 				DAF83CE421FB26970090CF08 /* PublicViewController.swift in Sources */,
 				DAEB4C0C21FF275C005E2924 /* SharedViewController.swift in Sources */,
+				DAEB4C1422007B19005E2924 /* UIViewController+AlertToAddNote.swift in Sources */,
 				DAEB4C1021FF2CC7005E2924 /* CloudKitHelper.swift in Sources */,
+				DAEB4C1622007DD4005E2924 /* UIViewController+RefreshController.swift in Sources */,
 				DAF83CE221FB26970090CF08 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

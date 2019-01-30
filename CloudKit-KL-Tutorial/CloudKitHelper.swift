@@ -12,6 +12,7 @@ import CloudKit
 enum iCloudDatabaseType {
     case publicDB
     case privateDB
+    case sharedDB
     
     var database: CKDatabase {
         switch self {
@@ -19,6 +20,8 @@ enum iCloudDatabaseType {
             return CKContainer.default().publicCloudDatabase
         case .privateDB:
             return CKContainer.default().privateCloudDatabase
+        case .sharedDB:
+            return CKContainer.default().sharedCloudDatabase
         }
     }
 }
@@ -32,27 +35,12 @@ class CloudKitHelper  {
         }
     }
     
-    func saveToCloud (note: String, record: CKRecord, database: CKDatabase, completion: @escaping(Bool) -> ()) {
+    func saveToCloud (note: String, record: CKRecord, database: CKDatabase, completion: @escaping(CKRecord?) -> ()) {
         let newNote = CKRecord(recordType: record.recordType )
         newNote.setValue(note, forKey: "content")
         database.save(newNote) { (record, error) in
             guard record != nil else { return }
-            completion(true)
-        }
-    }
-    
-    func saveSubscription(subscription: CKQuerySubscription, database: CKDatabase) {
-        
-        database.save(subscription) { [weak self] savedSubscription, error in
-            
-            print(savedSubscription as Any)
-            
-            guard let _ = savedSubscription, error == nil else {
-                
-                print(error?.localizedDescription)
-                
-                return
-            }
+            completion(record)
         }
     }
 }

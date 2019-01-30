@@ -13,61 +13,94 @@ class PublicViewController: UIViewController {
 
     @IBOutlet weak var tableView:UITableView!
     
-    let publicDatabase = CKContainer.default().publicCloudDatabase
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    
+    var color: CKRecord?
     var notes = [CKRecord]()
     var CKHelper = CloudKitHelper()
+    let colorRecord = CKRecord(recordType: "Change")
     let note = CKRecord(recordType: "Note")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryDatabase()
-        let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(queryDatabase), for: .valueChanged)
+        getPublicNotes()
+        let refreshControl = createRefreshControl(title: "🔃 Pull to refresh! 🔃", action: #selector(getPublicNotes))
         self.tableView.refreshControl = refreshControl
         // Do any additional setup after loading the view, typically from a nib.
         
         let subscription = CKQuerySubscription(recordType: "Note", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil), options: [.firesOnRecordCreation, .firesOnRecordDeletion, .firesOnRecordUpdate])
         
         let info = CKSubscription.NotificationInfo()
-        info.alertLocalizationKey = "note_registered_alert"
-        info.alertBody = "Nova nota publica adicionada"
+        info.alertLocalizationKey = "change_database_registered_alert"
+        info.alertBody = "Banco de dados foi modificado"
         
         subscription.notificationInfo = info
         
-        CKHelper.saveSubscription(subscription: subscription, database: publicDatabase)
+        let subscriptionColor = CKQuerySubscription(recordType: "Change", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil), options: [.firesOnRecordUpdate])
+        
+        let infoColor = CKSubscription.NotificationInfo()
+        infoColor.alertLocalizationKey = "change_color_registered_alert"
+        infoColor.alertBody = "Atualizacao do app"
+        
+        subscriptionColor.notificationInfo = infoColor
+        
+        CKContainer.default().publicCloudDatabase.save(subscription) { [weak self] savedSubscription, error in
+            
+            print(savedSubscription as Any)
+            
+            guard let _ = savedSubscription, error == nil else {
+                
+                print(error?.localizedDescription as Any)
+                
+                return
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.save(subscriptionColor) { [weak self] savedSubscription, error in
+            
+            print(savedSubscription as Any)
+            
+            guard let _ = savedSubscription, error == nil else {
+                
+                print(error?.localizedDescription as Any)
+                
+                return
+            }
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getPublicNotes), name: .shouldReload, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(changeColor), name: .changeAppColor, object: nil)
     }
 
     @IBAction func onPlusTapped () {
-        let alert = UIAlertController(title: "Type Something", message: "What would you like to in save?", preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.placeholder = "Type note here."
+        alertToAddNotes(database: iCloudDatabaseType.publicDB.database) { (record,error) in
+            print(record)
+            print(error)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let post = UIAlertAction(title: "Post", style: .default) { (_) in
-            guard let text = alert.textFields?.first?.text else { return }
-            self.CKHelper.saveToCloud(note: text, record: self.note , database: iCloudDatabaseType.publicDB.database , completion: { (sucess) in
-                if(sucess) {
-                    print("Record add with sucess!")
-                } else {
-                    print("error while trying add record in iClod")
-                }
-                self.queryDatabase()
-            })
-        }
-        
-        alert.addAction(cancel)
-        alert.addAction(post)
-        
-        present(alert, animated: true, completion: nil)
     }
     
-    @objc func queryDatabase() {
-        CKHelper.queryDatabase(database: publicDatabase, note: "Note") { (records) in
+    @objc func getPublicNotes() {
+        CKHelper.queryDatabase(database: iCloudDatabaseType.publicDB.database, note: "Note") { (records) in
             self.notes = records
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.tableView.refreshControl?.endRefreshing()
+            }
+        }
+    }
+    
+    @objc func changeColor() {
+        CKHelper.queryDatabase(database: iCloudDatabaseType.publicDB.database, note: "Change") { (records) in
+            let color = records.first?.value(forKey: "color")
+            if color != nil {
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.navigationBar.backgroundColor = UIColor.init(named: color as! String)
+                    })
+                }
+            } else {
+                print ("didnt found color")
             }
         }
     }
@@ -89,3 +122,5 @@ extension PublicViewController: UITableViewDataSource {
         return cell
     }
 }
+
+
