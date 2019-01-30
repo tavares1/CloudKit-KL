@@ -77,6 +77,12 @@ class PublicViewController: UIViewController {
         alertToAddNotes(database: iCloudDatabaseType.publicDB.database) { (record,error) in
             print(record)
             print(error)
+            if let record = record{
+                DispatchQueue.main.async {
+                    self.notes.insert(record, at: 0)
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     

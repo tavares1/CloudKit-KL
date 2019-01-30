@@ -28,7 +28,9 @@ enum iCloudDatabaseType {
 
 class CloudKitHelper  {
     func queryDatabase (database: CKDatabase,note: String ,completion: @escaping ([CKRecord]) -> ()) {
+        
         let query = CKQuery(recordType: note, predicate: NSPredicate(value: true))
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let records = records else { return }
             completion(records)
