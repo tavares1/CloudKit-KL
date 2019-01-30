@@ -18,15 +18,20 @@ class SharedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getSharedNotes()
-        let refreshControl = createRefreshControl(title: "Pull to refresh 🔄", action: #selector(getSharedNotes))
-        self.tableView.refreshControl = refreshControl
+//        getSharedNotes()
+//        let refreshControl = createRefreshControl(title: "Pull to refresh 🔄", action: #selector(getSharedNotes))
+//        self.tableView.refreshControl = refreshControl
+        let alert = UIAlertController(title: "Em produção", message: "Banco compartilhado é complicado.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
     }
-    
+
+
     @IBAction func onPlusTapped(_ sender: Any) {
         alertToAddNotes(database: iCloudDatabaseType.sharedDB.database) { (record,error) in
-            print(record)
-            print(error)
+//            print(record)
+//            print(error)
         }
     }
     
@@ -57,3 +62,4 @@ extension SharedViewController: UITableViewDataSource {
         return cell
     }
 }
+
